@@ -5,10 +5,9 @@
 - randomize for the button
 - story for the paragraph that outputs the final story
 */
-var customName = document.querySelector('customname');
+var customName = document.querySelector('#customname');
 var randomize = document.querySelector('.randomize');
 var story = document.querySelector('.story');
-
 
 /* STEP 3: Create the variable that contains the story string that will be modified 
 - use var storyText to containt the following:
@@ -37,6 +36,7 @@ function result() {
     // STEP 7: Create a new variable called newStory and 
     //set it to the value of storyText - we don't want to overwrite the original story!
     var newStory = storyText;
+
     /* STEP 8: Use the randomValueFromArray() function to generate a value for 
     each of three new variables - xItem, yItem, and zItem
 	Call up the function and for each variable, pass it the array from 
@@ -46,7 +46,6 @@ function result() {
     var yItem = randomValueFromArray(insertY);
     var zItem = randomValueFromArray(insertZ);
     console.log(xItem);
-
     /* STEP 9: Replace the three placeholders in the newStory 
     string — :insertx:, :inserty:, and :insertz: — with the strings stored in 
     xItem, yItem, and zItem. Each time, be sure to update the variable newStory 
@@ -59,16 +58,14 @@ function result() {
     if(customName.value !== '') {
         newStory = newStory.replace('Bob', customName.value);
     }
-
     /* STEP 11: If the metric radio button has been checked, we need to convert the temperature and mass numbers in the story */
     if (document.getElementById("metric").checked) {
         // STEP 11a: Create a variable called weight and convert the 300lbs to kgs (1lb = 0.453592kg)
-        var weight = Math.round(300 * 0.453592); 
+        var weight = Math.round(300 * 0.453592);
         // STEP 11b: Replace the string 300 pounds with the updated weight in kg
-        
-        newStory = newStory.replace('300 pounds', weight + ' kg'); 
+        newStory = newStory.replace('300 pounds', weight + ' kg');
         // STEP 12a: Create a variable called temp and convert °F to °C ... the formula for conversion is °C = (°F - 32) x 5/9
-        var temp = Math.round((94 - 32) * 5/9); 
+        var temp = Math.round((94 - 32) * 5/9);
         // STEP 12b: Replace the string '94 fahrenheit' with the updated temperature in °C
         newStory = newStory.replace('94 farenheit', temp + '°C');
     }
@@ -76,8 +73,8 @@ function result() {
     story.textContent = newStory;
     // The following line makes the paragraph visible
     story.style.visibility = "visible";
+}
 
-                 }
 // EVENT LISTENERS
 /* STEP 5: Add a click event listener to the randomize variable 
 so that when the button it represents is clicked, the result() function is run. */
